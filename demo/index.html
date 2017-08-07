@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>React</title>
+	<script src="../build/react.js"></script>
+	<script src="../build/react-dom.js"></script>
+	<script src="../build/browser.min.js"></script>
+</head>
+<body>
+	<div id="demo1"></div>
+	<script type="text/babel">
+		var arr = [<h1 key="1">array test</h1>, <h2 key="2">hello array</h2>]
+		var arr2 = ['wml', 'wuml', 'annual']
+
+		var HelloWml = React.createClass({
+			getDefaultProps: function() {
+				return {
+					name: 'annual'
+				}
+			},
+			getInitialState: function() {
+				return {
+					text: '',
+					opacity: 1.0
+				}
+			},
+
+			componentDidMount: function() {
+				console.log(this.state.opacity,999)
+				this.timer = setInterval(function() {
+					var opacity = this.state.opacity
+
+					opacity -= 0.05
+					if(opacity < 0.1) {
+						opacity = 1.0
+					}
+					this.setState({
+						opacity: opacity
+					})
+				}.bind(this), 500)
+			},
+
+			handleChange: function(e) {
+				console.log(e.target.value,7777)
+				console.log(this.refs.realDom.value,7777)
+				var value = e.target.value
+				this.setState({
+					text: value
+				})
+			},
+			propTypes: {
+				name:  React.PropTypes.string.isRequired,
+			},
+			render: function() {
+				return <div>
+					<h1 style={{opacity: this.state.opacity}}>hello {this.props.name}</h1>
+					<input type="text" ref="realDom" onChange={this.handleChange} />
+					<h3>{this.state.text}</h3>
+				</div>
+			}
+		})
+
+		ReactDOM.render(
+			<div>
+				<h1>Hello wml</h1>
+				<div>{arr}</div>
+				{arr2.map(function(items,index) {
+					return <p key={index}>hello, {items}!</p>
+				})}
+				<HelloWml  />
+			</div>,
+
+			document.getElementById('demo1')
+		)
+	</script>
+</body>
+</html>
