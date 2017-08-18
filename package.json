@@ -1,0 +1,23 @@
+{
+  "name": "webreact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.5.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wumeilian/webReact.git"
+  },
+  "author": "wml",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wumeilian/webReact/issues"
+  },
+  "homepage": "https://github.com/wumeilian/webReact#readme"
+}
